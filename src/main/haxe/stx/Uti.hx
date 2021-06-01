@@ -31,3 +31,12 @@ typedef UTypedef          = stx.uti.UTypedef;
 typedef UTypedefDef       = stx.uti.UTypedef.UTypedefDef;
 typedef UAbstractLinkDef  = stx.uti.UAbstractLink.UAbstractLinkDef;
 typedef UAbstractLink     = stx.uti.UAbstractLink;
+
+class Uti{
+  private static var initialized                : Bool = false;
+  static public function initialize(){
+   if(!initialized){
+     initialized = true;
+   } 
+  }
+}
