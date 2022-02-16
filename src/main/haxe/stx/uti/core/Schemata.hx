@@ -1,5 +1,5 @@
 package stx.uti.core;
 
 interface Schemata{
-  public function reply():Array<tink.core.Lazy<UType>>;
+  public function reply():Clustter<tink.core.Lazy<UType>>;
 }

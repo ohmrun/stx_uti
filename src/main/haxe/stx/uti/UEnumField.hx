@@ -2,7 +2,7 @@ package stx.uti;
 
 typedef UEnumFieldDef = {
   var name:String;
-  var args:Null<Array<UEnumArgument>>;
+  var args:Null<Cluster<UEnumArgument>>;
   var doc:String;
   var platforms:UPlatforms;
   var meta:UMetaData;

@@ -6,9 +6,9 @@ typedef UClassdefDef = UTypeInfosDef & {
   var isFinal:Bool;
   var isInterface:Bool;
   var superClass:Null<UPathParams>;
-  var interfaces:Array<UPathParams>;
-  var fields:Array<UClassField>;
-  var statics:Array<UClassField>;
+  var interfaces:Cluster<UPathParams>;
+  var fields:Cluster<UClassField>;
+  var statics:Cluster<UClassField>;
   var tdynamic:Null<UType>;
 };
 abstract UClassdef(UClassdefDef) from UClassdefDef to UClassdefDef{
@@ -24,7 +24,7 @@ abstract UClassdef(UClassdefDef) from UClassdefDef to UClassdefDef{
       doc         : self.doc,
       isPrivate   : self.isPrivate,
       platforms   : self.platforms,
-      meta        : self.meta,
+      meta        : UMetaData.fromCMetaData(self.meta),
 
       isExtern    : self.isExtern,
       isFinal     : self.isFinal,

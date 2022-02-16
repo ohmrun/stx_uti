@@ -2,7 +2,7 @@ package stx.uti;
 
 typedef UEnumdefDef = UTypeInfosDef & {
   var isExtern:Bool;
-  var constructors:Array<UEnumField>;
+  var constructors:Cluster<UEnumField>;
 };
 abstract UEnumdef(UEnumdefDef) from UEnumdefDef to UEnumdefDef{
   public function new(self) this = self;
@@ -17,7 +17,7 @@ abstract UEnumdef(UEnumdefDef) from UEnumdefDef to UEnumdefDef{
       doc       : self.doc,
       isPrivate : self.isPrivate,
       platforms : self.platforms,
-      meta      : self.meta,
+      meta      : UMetaData.fromCMetaData(self.meta),
 
       isExtern  : self.isExtern,
       constructors : self.constructors.map(UEnumField.fromCEnumField)

@@ -1,7 +1,7 @@
 package stx.uti;
 
 
-typedef UMetaDataDef = Array<{name:String, params:Array<String>}>;
+typedef UMetaDataDef = Cluster<{name:String, params:Cluster<String>}>;
 
 @:forward abstract UMetaData(UMetaDataDef) from UMetaDataDef to UMetaDataDef{
   public function new(self) this = self;

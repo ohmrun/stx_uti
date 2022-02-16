@@ -1,0 +1,11 @@
+{
+ "build" : {
+   "-lib": ["stx_pico","stx_nano","stx_log","stx_bake","stx_uti"],
+    "main" : {
+      "-main" : "Main",
+      "interp" : {
+        "--interp" : true
+      }
+    }
+ }
+}

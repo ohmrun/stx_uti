@@ -14,7 +14,7 @@ typedef UClassFieldDef = {
   var platforms:UPlatforms;
   var meta:UMetaData;
   var line:Null<Int>;
-  var overloads:Null<Array<UClassField>>;
+  var overloads:Null<Cluster<UClassField>>;
   var expr:Null<String>;
 };
 abstract UClassField(UClassFieldDef) from UClassFieldDef to UClassFieldDef{
@@ -51,7 +51,7 @@ abstract UClassField(UClassFieldDef) from UClassFieldDef to UClassFieldDef{
         set         : URights.fromCRights(self.set), 
         params      : self.params, 
         platforms   : self.platforms, 
-        meta        : self.meta, 
+        meta        : UMetaData.fromCMetaData(self.meta),
         line        : self.line, 
         overloads   : __.option(self.overloads).map(arr -> arr.map(UClassField.fromCClassField)).defv(null), 
         expr        : self.expr 

@@ -2,13 +2,13 @@ package stx.uti;
 
 enum UTypeSum{
   UUnknown;
-  UEnum(name:UPath, params:Array<UType>);
-  UClass(name:UPath, params:Array<UType>);
-  UTypedef(name:UPath, params:Array<UType>);
-  UFunction(args:Array<UFunctionArgument>, ret:UType);
-  UAnonymous(fields:Array<UClassField>);
+  UEnum(name:UPath, params:Cluster<UType>);
+  UClass(name:UPath, params:Cluster<UType>);
+  UTypedef(name:UPath, params:Cluster<UType>);
+  UFunction(args:Cluster<UFunctionArgument>, ret:UType);
+  UAnonymous(fields:Cluster<UClassField>);
   UDynamic(?t:UType);
-  UAbstract(name:UPath, params:Array<UType>);
+  UAbstract(name:UPath, params:Cluster<UType>);
 }
 abstract UType(UTypeSum) from UTypeSum to UTypeSum{
   public function new(self) this = self;

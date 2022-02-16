@@ -2,7 +2,7 @@ package stx.uti;
 
 typedef UPathParamsDef = {
   var path:UPath;
-  var params:Array<UType>;
+  var params:Cluster<UType>;
 };
 abstract UPathParams(UPathParamsDef) from UPathParamsDef to UPathParamsDef{
   public function new(self) this = self;

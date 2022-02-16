@@ -36,7 +36,7 @@ typedef UTypeInfosDef = {
       doc       : self.doc,
       isPrivate : self.isPrivate,
       platforms : self.platforms,
-      meta      : self.meta
+      meta      : UMetaData.fromCMetaData(self.meta)
     });
   } 
   public function prj():UTypeInfosDef return this;

@@ -1,7 +1,7 @@
 package stx.uti;
 
 enum UTypeTreeSum {
-  UPackage(name:String, full:String, subs:Array<UTypeTree>);
+  UPackage(name:String, full:String, subs:Cluster<UTypeTree>);
   UClassdecl(c:UClassdef);
   UEnumdecl(e:UEnumdef);
   UTypedecl(t:UTypedef);

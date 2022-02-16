@@ -22,7 +22,7 @@ abstract UTypedef(UTypedefDef) from UTypedefDef to UTypedefDef{
       doc       : self.doc,
       isPrivate : self.isPrivate,
       platforms : self.platforms,
-      meta      : self.meta,
+      meta      : UMetaData.fromCMetaData(self.meta),
       
       type  : UType.fromCType(self.type),
       types : types

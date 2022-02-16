@@ -1,8 +1,8 @@
 package stx.uti;
 
 typedef UAbstractdefDef = UTypeInfosDef & {
-  var to:Array<{t:UType, field:Null<String>}>;
-  var from:Array<{t:UType, field:Null<String>}>;
+  var to:Cluster<{t:UType, field:Null<String>}>;
+  var from:Cluster<{t:UType, field:Null<String>}>;
   var impl:UClassdef;//TODO More than in macros?
   var athis:UType;
 };
@@ -40,7 +40,7 @@ abstract UAbstractdef(UAbstractdefDef) from UAbstractdefDef to UAbstractdefDef{
         doc         : self.doc,
         isPrivate   : self.isPrivate,
         platforms   : self.platforms,
-        meta        : self.meta,
+        meta        : UMetaData.fromCMetaData(self.meta),
     });
   }
   public function prj():UAbstractdefDef return this;
