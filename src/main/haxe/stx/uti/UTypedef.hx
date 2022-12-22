@@ -7,7 +7,7 @@ typedef UTypedefDef = UTypeInfosDef & {
 };
 abstract UTypedef(UTypedefDef) from UTypedefDef to UTypedefDef{
   public function new(self) this = self;
-  static public function lift(self:UTypedefDef):UTypedef return new UTypedef(self);
+  @:noUsing static public function lift(self:UTypedefDef):UTypedef return new UTypedef(self);
 
   static public function fromCTypedef(self:CTypedef):UTypedef{
     var types = new Map();

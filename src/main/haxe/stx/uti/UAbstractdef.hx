@@ -8,8 +8,8 @@ typedef UAbstractdefDef = UTypeInfosDef & {
 };
 abstract UAbstractdef(UAbstractdefDef) from UAbstractdefDef to UAbstractdefDef{
   public function new(self) this = self;
-  static public function lift(self:UAbstractdefDef):UAbstractdef return new UAbstractdef(self);
-  static public function make(to,from,impl,athis,infos:UTypeInfos){
+  @:noUsing static public function lift(self:UAbstractdefDef):UAbstractdef return new UAbstractdef(self);
+  @:noUsing static public function make(to,from,impl,athis,infos:UTypeInfos){
     return lift({
       to          : to,
       from        : from,

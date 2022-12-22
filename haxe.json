@@ -1,11 +1,25 @@
 {
- "build" : {
-   "-lib": ["stx_pico","stx_nano","stx_log","stx_bake","stx_uti"],
+  "build" : {
+    "-D"   : ["no-deprecation-warnings"],
+    "-lib" : ["stx_pico","stx_nano","stx_log","stx_bake","stx_uti"],
+    "unit" : {
+      
+    },
+    "macro" : {
+
+    },
     "main" : {
       "-main" : "Main",
       "interp" : {
         "--interp" : true
       }
+    },
+    "boot" : {
+      "-D" : ["stx.boot"],
+      "-main" : "Main",
+      "interp" : {
+        "--interp" : true
+      }
     }
- }
+  }
 }

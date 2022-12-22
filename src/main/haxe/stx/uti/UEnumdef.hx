@@ -6,7 +6,7 @@ typedef UEnumdefDef = UTypeInfosDef & {
 };
 abstract UEnumdef(UEnumdefDef) from UEnumdefDef to UEnumdefDef{
   public function new(self) this = self;
-  static public function lift(self:UEnumdefDef):UEnumdef return new UEnumdef(self);
+  @:noUsing static public function lift(self:UEnumdefDef):UEnumdef return new UEnumdef(self);
 
   static public function fromCEnumdef(self:CEnumdef){
     return lift({

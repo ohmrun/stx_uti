@@ -9,7 +9,7 @@ enum UTypeTreeSum {
 }
 abstract UTypeTree(UTypeTreeSum) from UTypeTreeSum to UTypeTreeSum{
   public function new(self) this = self;
-  static public function lift(self:UTypeTreeSum):UTypeTree return new UTypeTree(self);
+  @:noUsing static public function lift(self:UTypeTreeSum):UTypeTree return new UTypeTree(self);
 
   static public function fromCTypeTree(self:CTypeTree){
     return switch(self){

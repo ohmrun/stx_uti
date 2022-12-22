@@ -2,26 +2,26 @@ package stx.uti;
 
 
 typedef UClassFieldDef = {
-  var name:String;
-  var type:UType;
-  var isPublic:Bool;
-  var isFinal:Bool;
-  var isOverride:Bool;
-  var doc:Null<String>;
-  var get:URights;
-  var set:URights;
-  var params:UTypeParams;
-  var platforms:UPlatforms;
-  var meta:UMetaData;
-  var line:Null<Int>;
-  var overloads:Null<Cluster<UClassField>>;
-  var expr:Null<String>;
+  var name        : String;
+  var type        : UType;
+  var isPublic    : Bool;
+  var isFinal     : Bool;
+  var isOverride  : Bool;
+  var doc         : Null<String>;
+  var get         : URights;
+  var set         : URights;
+  var params      : UTypeParams;
+  var platforms   : UPlatforms;
+  var meta        : UMetaData ;
+  var line        : Null<Int>;
+  var overloads   : Null<Cluster<UClassField>>;
+  var expr        : Null<String>;
 };
 abstract UClassField(UClassFieldDef) from UClassFieldDef to UClassFieldDef{
   public function new(self) this = self;
-  static public function lift(self:UClassFieldDef):UClassField return new UClassField(self);
+  @:noUsing static public function lift(self:UClassFieldDef):UClassField return new UClassField(self);
 
-  static public function make(name,type,isPublic,isFinal,isOverride,doc,get,set,params,platforms,meta,line,overloads,expr){
+  @:noUsing static public function make(name,type,isPublic,isFinal,isOverride,doc,get,set,params,platforms,meta,line,overloads,expr){
     return lift({
       name        : name, 
       type        : type, 

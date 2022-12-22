@@ -1,9 +1,17 @@
 package stx.uti;
 
+#if macro
+  import haxe.macro.Type;
+  import haxe.macro.Expr;
+  import haxe.macro.Context;
+  import haxe.macro.Compiler;
+#end
 using stx.Pico;
 using stx.Nano;
 
+using stx.uti.Logging;
 using stx.Uti;
+
 
 import haxe.rtti.CType.Path as CPath;
 import haxe.rtti.CType.Platforms as CPlatforms;

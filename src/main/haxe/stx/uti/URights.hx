@@ -10,7 +10,7 @@ enum URightsSum {
 }
 abstract URights(URightsSum) from URightsSum to URightsSum{
   public function new(self) this = self;
-  static public function lift(self:URightsSum):URights return new URights(self);
+  @:noUsing static public function lift(self:URightsSum):URights return new URights(self);
 
   static public function fromCRights(self:CRights){
     return switch self {

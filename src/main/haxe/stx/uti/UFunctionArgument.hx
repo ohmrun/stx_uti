@@ -4,7 +4,7 @@ typedef UFunctionArgumentDef = {name:String, opt:Bool, t:UType, ?value:String};
 
 @:forward abstract UFunctionArgument(UFunctionArgumentDef) from UFunctionArgumentDef to UFunctionArgumentDef{
   public function new(self) this = self;
-  static public function lift(self:UFunctionArgumentDef):UFunctionArgument return new UFunctionArgument(self);
+  @:noUsing static public function lift(self:UFunctionArgumentDef):UFunctionArgument return new UFunctionArgument(self);
 
   static public inline function make(name,opt,t,?value){
     return lift({

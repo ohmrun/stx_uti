@@ -13,9 +13,9 @@ typedef UTypeInfosDef = {
 
 @:forward abstract UTypeInfos(UTypeInfosDef) from UTypeInfosDef to UTypeInfosDef{
   public function new(self) this = self;
-  static public function lift(self:UTypeInfosDef):UTypeInfos return new UTypeInfos(self);
+  @:noUsing static public function lift(self:UTypeInfosDef):UTypeInfos return new UTypeInfos(self);
 
-  static public function make(path,module,file,params,doc,isPrivate,platforms,meta){
+  @:noUsing static public function make(path,module,file,params,doc,isPrivate,platforms,meta){
     return lift({
       path      : path,
       module    : module,

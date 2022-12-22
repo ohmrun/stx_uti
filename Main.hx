@@ -1,20 +1,27 @@
 using stx.Nano;
 using stx.Uti;
+using stx.Log;
 
 class Main {
 	static function main() {
-		var a = TestAbstract.unit();
-		var b = __.uti();
-		var c = b.nominal(a);
-		trace(c);
-		
-		test_typeof();
+		final log 			= __.log().global;
+					log.level = TRACE;
+					log.includes.push("**/*");
+
+		#if stx.boot
+				boot();
+				var a 	= TestAbstract.unit();
+				Uti.entype(a);
+		#else
+			var a = TestAbstract.unit();
+			var b = __.uti();
+			// var c = b.nominal(a);
+			// trace(c);
+		#end
 	}
-	static macro function test_typeof(){
-		var a = TestAbstract.unit();
-		var b = __.uti();
-		var d = b.nominal(a);
-		trace(d);
+	static macro function boot(){
+		var a 	= TestAbstract.unit();
+		Uti.entype(a);
 		return macro {};
 	}
 }

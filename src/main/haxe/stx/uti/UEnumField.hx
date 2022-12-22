@@ -9,7 +9,7 @@ typedef UEnumFieldDef = {
 };
 @:forward abstract UEnumField(UEnumFieldDef) from UEnumFieldDef to UEnumFieldDef{
   public function new(self) this = self;
-  static public function lift(self:UEnumFieldDef):UEnumField return new UEnumField(self);
+  @:noUsing static public function lift(self:UEnumFieldDef):UEnumField return new UEnumField(self);
 
   static public function fromCEnumField(self:CEnumField){
     return lift({

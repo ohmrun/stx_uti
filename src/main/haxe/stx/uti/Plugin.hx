@@ -14,16 +14,18 @@ class Plugin{
         throw '`-lib bake` should be used first';
       }
     );
-    final main = bake.args.lfold(
-      (next,memo:Option<Option<String>>) -> {
-        return switch([next,memo]){
-          case ['-main',None] : Some(None);
-          case [x,Some(None)] : Some(Some(x));
-          default             : memo;
-        }
-      },
-      None
-    ).fudge().fudge();
+    final main = bake.get_main();
+    __.log().info(_ -> _.pure(main));
+    // final main = bake.args.lfold(
+    //   (next,memo:Option<Option<String>>) -> {
+    //     return switch([next,memo]){
+    //       case ['-main',None] : Some(None);
+    //       case [x,Some(None)] : Some(Some(x));
+    //       default             : memo;
+    //     }
+    //   },
+    //   None
+    // ).fudge().fudge();
 
     return macro {};
   }

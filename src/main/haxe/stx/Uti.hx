@@ -5,6 +5,16 @@ using stx.Pico;
 using stx.Nano;
 using stx.Log;
 
+#if macro
+  import haxe.macro.Type;
+  import haxe.macro.Expr;
+  import haxe.macro.Context;
+  import haxe.macro.Compiler;
+#end
+
+#if macro
+typedef UtiBootLift       = stx.uti.term.UtiBoot.UtiBootLift;
+#end
 typedef UPath             = String;
 typedef UPlatforms        = Cluster<String>;
 typedef UFunctionArgument = stx.uti.UFunctionArgument;
@@ -41,41 +51,36 @@ class Uti{
   static public function uti(wildcard:Wildcard){
     #if macro
       //__.log()("macro bake");
-      return stx.UtiRuntime.instance;//Need to call any build macros after stx_build plugin is called.
+      return stx.uti.term.UtiBoot.instance;//Need to call any build macros after stx_build plugin is called.
     #else
       //__.log()("runtime bake");
-      return new stx.uti.UtiMacrotime();//If this isn't built that's most likely some other error.
+      return new stx.uti.term.UtiMain();//If this isn't built that's most likely some other error.
     #end
   }
+  #if macro
+  static public function entype(o:Expr){
+    trace('entype in boot context');
+    trace(o);
+    return macro {};
+  }
+  #else
+  static public macro function entype(o:Dynamic){
+    trace('entype in main context');
+    trace(o);
+    return macro {};
+  }
+  #end
 }
-class UtiRuntime{
-  static public var instance(get,null) : UtiRuntime;
-  static function get_instance(){
-    return __.option(instance).def(
-      () -> instance = new UtiRuntime()
-    );
-  }
-  private static var initialized : Bool = false;
-  static public function initialize(){
-   if(!initialized){
-     initialized = true;
-   } 
-  }
-  public function new(){
-
-  }
+class LiftUtiBoot{
+  #if macro
+  // static inline public function nominal(self:UtiBoot,o){
+  //   return haxe.macro.TypeTools.toString(haxe.macro.Context.typeof(o));
+  // }
+  #end
 }
-
-// class LiftUtiRuntime{
-//   #if macro
-//   static inline public function nominal(self:UtiRuntime,o:haxe.macro.Expr){
-//     return haxe.macro.TypeTools.toString(haxe.macro.Context.typeof(o));
-//   }
-//   #end
-// }
-// class LiftUtiRuntime2{
+// class LiftUtiBoot2{
 //   #if !macro
-//   static inline public macro function nominal(self:haxe.macro.Expr.ExprOf<UtiRuntime>,e:haxe.macro.Expr){
+//   static inline public macro function nominal(self:haxe.macro.Expr.ExprOf<UtiBoot>,e:haxe.macro.Expr){
 //     final id = haxe.macro.TypeTools.toString(haxe.macro.Context.typeof(e));
 //     return macro $v{id};
 //   }

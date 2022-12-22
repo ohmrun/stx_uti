@@ -1,6 +1,5 @@
 package stx.uti;
 
-
 typedef UClassdefDef = UTypeInfosDef & {
   var isExtern:Bool;
   var isFinal:Bool;
@@ -13,7 +12,7 @@ typedef UClassdefDef = UTypeInfosDef & {
 };
 abstract UClassdef(UClassdefDef) from UClassdefDef to UClassdefDef{
   public function new(self) this = self;
-  static public function lift(self:UClassdefDef):UClassdef return new UClassdef(self);
+  @:noUsing static public function lift(self:UClassdefDef):UClassdef return new UClassdef(self);
 
   static public function fromCClassdef(self:CClassdef){
     return lift({

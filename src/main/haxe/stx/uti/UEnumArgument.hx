@@ -4,7 +4,7 @@ typedef UEnumArgumentDef = {name:String, opt:Bool, t:UType};
 
 @:forward abstract UEnumArgument(UEnumArgumentDef) from UEnumArgumentDef to UEnumArgumentDef{
   public function new(self) this = self;
-  static public function lift(self:UEnumArgumentDef):UEnumArgument return new UEnumArgument(self);
+  @:noUsing static public function lift(self:UEnumArgumentDef):UEnumArgument return new UEnumArgument(self);
 
   static public function fromCEnumArgument(self:{name : String, opt : Bool, t : CType}){
     return lift({

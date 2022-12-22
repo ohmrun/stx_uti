@@ -12,7 +12,7 @@ enum UTypeSum{
 }
 abstract UType(UTypeSum) from UTypeSum to UTypeSum{
   public function new(self) this = self;
-  static public function lift(self:UTypeSum):UType return new UType(self);
+  @:noUsing static public function lift(self:UTypeSum):UType return new UType(self);
 
   static public function fromCType(self:CType){
     return switch self {
